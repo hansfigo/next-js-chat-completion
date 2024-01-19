@@ -1,5 +1,5 @@
-import { NextApiResponse, NextApiRequest } from 'next'
-import { Configuration, OpenAIApi } from 'openai'
+import { NextApiRequest, NextApiResponse } from 'next';
+import { Configuration, OpenAIApi } from 'openai';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -9,6 +9,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Get Input user dari request
     const { prompt } = JSON.parse(req.body);
 
+    if (!prompt) {
+        res.status(400).json({ error: "Prompt Tidak boleh Kosong" })
+    }
+
     // Setting API KEY dari env
     const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
@@ -17,23 +21,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Appy Setting tadi
     const openai = new OpenAIApi(configuration);
 
-    console.log(configuration.apiKey);
-    
     try {
         // Buat Request ke GPT
         const response = await openai.createCompletion({
-            model: "text-davinci-003",
+            model: "gpt-3.5-turbo-instruct",
             prompt: prompt,
-            max_tokens: 1000,
+            max_tokens: 200,
             temperature: 0.6,
         });
 
         //return Hasil dari request Chat gpt
         res.status(200).json(response.data.choices[0].text)
-    } catch (error : any) {
+    } catch (error: any) {
 
         console.log("ERR : ", error.message);
-        
+
         res.status(500).json({ error: error.message })
     }
 
