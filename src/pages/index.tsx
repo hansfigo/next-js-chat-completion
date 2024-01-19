@@ -33,6 +33,7 @@ const Home = () => {
           <Skeleton />
         )}
       </div>
+      <p className='py-8'>by FigoMager , <a target='_blank' href='https://github.com/hansfigo' className='underline text-blue-400'>Github</a></p>
     </main>
   )
 }
