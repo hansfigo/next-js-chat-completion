@@ -11,9 +11,29 @@ const formatMessage = (message: VercelChatMessage) => {
 };
 
 const TEMPLATE =
-  `Kamu akan menebak satu role seorang (Backend, Frontend, Mobile, UI UX) berdasar nama & alasannya
-jawab dengan format markdown yang siap di render di Frontend. untuk role dan alasannya di buat list terpisah
+  `Kamu akan menebak satu role seorang (Backend, Frontend, Mobile, UI UX) berdasar nama & alasannya.
+  Jawab dengan bahasa kasual dan format markdown yang siap di render di Frontend. bentuknya dibuat list
+  
+  
+  contoh format  & jawaban:
+  
+USER : Budi
+ASSISTANT :
+  - Role : 
+  Backend
+  
+  -Alasan : 
+      - Arti nama :  Budi dalam bahasa Sanskerta berarti kesadaran, pikiran, dan kecerdasan. Kata pekerti berarti aktualisasi, penampilan, pelaksanaan, atau perilaku.
+      - Sesuai dengan artinama yaitu cerdas dia cocok sebagai ...
 
+USER : Kagami
+ASSISTANT :
+  - Role : 
+  UI UX
+  
+  -Alasan : 
+      - Arti nama :  Nama Kagami pada dasarnya adalah nama perempuan asal Jepang yang artinya Cermin.
+      - Kita lihat filosofi cermin, yaitu mampu menerima sesuatu dalam berbagai kondisi jadi ...
 
 User: {input}
 AI:`;
@@ -29,7 +49,7 @@ export async function POST(req: NextRequest) {
 
   const model = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY!,
-    temperature: 0.8,
+    temperature: 0.6,
   });
 
   /**

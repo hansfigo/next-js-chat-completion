@@ -11,7 +11,7 @@ interface formProps {
 const ChatForm = (props: formProps) => {
     const { handleSubmit, input, isLoading, handleInputChange } = props
     return (
-        < form onSubmit={handleSubmit} className="flex z-20 px-8 md:px-0 container  justify-center items-center gap-4 flex-col md:flex-row fixed  left-1/2 bottom-8 transform -translate-x-1/2 -translate-y-1/2" >
+        < form onSubmit={handleSubmit} className="flex z-20 px-8 container max-w-[800px]  justify-center items-center gap-4 flex-col md:flex-row fixed  left-1/2 bottom-8 transform -translate-x-1/2 -translate-y-1/2" >
             <div className="relative rounded-full w-full ">
                 <input
                     id="input"
