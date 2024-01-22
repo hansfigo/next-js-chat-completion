@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAi from 'openai';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -14,16 +14,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Setting API KEY dari env
-    const configuration = new Configuration({
+    const configuration = {
         apiKey: process.env.OPENAI_API_KEY,
-    });
+    }
 
     // Appy Setting tadi
-    const openai = new OpenAIApi(configuration);
+    const openai = new OpenAi(configuration);
 
     try {
         // Buat Request ke GPT
-        const response = await openai.createCompletion({
+        const response = await openai.completions.create({
             model: "gpt-3.5-turbo-instruct",
             prompt: prompt,
             max_tokens: 200,
@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
 
         //return Hasil dari request Chat gpt
-        res.status(200).json(response.data.choices[0].text)
+        res.status(200).json(response.choices[0].text)
     } catch (error: any) {
 
         console.log("ERR : ", error.message);
