@@ -11,7 +11,7 @@ const formatMessage = (message: VercelChatMessage) => {
 };
 
 const TEMPLATE =
-  `Kamu akan menebak role seorang (Backend, Frontend, Mobile, UI UX) berdasar nama & alasannya
+  `Kamu akan menebak satu role seorang (Backend, Frontend, Mobile, UI UX) berdasar nama & alasannya
 jawab dengan format markdown yang siap di render di Frontend. untuk role dan alasannya di buat list terpisah
 
 

@@ -49,14 +49,6 @@ export const AssistantComponent = (props: chatBubbleProps) => {
   const { content } = props
 
   return (
-    // <div className='py-8 w-full'>
-    //   <h1 className='font-black'>ChatGPT</h1>
-    //   <div className='prose prose-li:w-full min-w-full dark:prose-invert'>
-    //     <Markdown>
-    //       {content}
-    //     </Markdown>
-    //   </div>
-    // </div>
     <div className='py-8 flex flex-col w-full'>
       <div className='flex w-full justify-start items-start gap-4'>
         <div className='rounded-full overflow-hidden min-h-8 min-w-8 max-h-8 max-w-[2rem]'>
