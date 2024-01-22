@@ -12,7 +12,7 @@ const Home = () => {
   const [error] = useAtom(getIsError)
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between md:p-24 p-8 ${jetbrain.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between md:p-24 p-8`}
     >
       <div className='flex xl:max-w-[800px] xl:min-w-[800px] px-8 xl:px-0 flex-col gap-4'>
         <h1 className='text-2xl md:text-4xl font-bold '>GPT Completion Demo 😈</h1>
