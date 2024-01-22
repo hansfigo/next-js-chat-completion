@@ -1,9 +1,6 @@
 import { useChat } from 'ai/react';
 import Markdown from 'react-markdown';
 import { ChatForm } from './components/ChatForm';
-import "./index.css";
-
-
 export default function IndexPage() {
   const { messages, handleSubmit, input, handleInputChange, isLoading } = useChat(
     { api: "/api/langchain" }
