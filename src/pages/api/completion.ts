@@ -7,7 +7,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(500).json({ error: "Tidak Ada Api Key !!" })
     }
     // Get Input user dari request
-    const { prompt } = JSON.parse(req.body);
+    const { prompt } = req.body;
+
 
     if (!prompt) {
         res.status(400).json({ error: "Prompt Tidak boleh Kosong" })

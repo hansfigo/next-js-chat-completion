@@ -15,5 +15,7 @@ const getCompletion = atom((get) => { return get(completionAtom) })
 const isErrorAtom = atom({ isError: false, message: "" })
 const getIsError = atom((get) => { return get(isErrorAtom) })
 
+const selectedImageAtom = atom<string>('')
+
 // export 
-export { isLoadingAtom, completionAtom, getIsLoading, getCompletion, isErrorAtom, getIsError }
+export { completionAtom, getCompletion, getIsError, getIsLoading, isErrorAtom, isLoadingAtom, selectedImageAtom }

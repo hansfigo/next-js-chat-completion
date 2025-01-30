@@ -10,33 +10,40 @@ const formatMessage = (message: VercelChatMessage) => {
   return `${message.role}: ${message.content}`;
 };
 
+// const TEMPLATE =
+//   `Kamu akan menebak satu role seorang (Backend, Frontend, Mobile, UI UX) berdasar nama & alasannya.
+//   Jawab dengan bahasa kasual dan format markdown yang siap di render di Frontend. bentuknya dibuat list
+
+
+//   contoh format  & jawaban:
+
+// USER : Budi
+// ASSISTANT :
+//   - Role : 
+//   Backend
+
+//   -Alasan : 
+//       - Arti nama :  Budi dalam bahasa Sanskerta berarti kesadaran, pikiran, dan kecerdasan. Kata pekerti berarti aktualisasi, penampilan, pelaksanaan, atau perilaku.
+//       - Sesuai dengan artinama yaitu cerdas dia cocok sebagai ...
+
+// USER : Kagami
+// ASSISTANT :
+//   - Role : 
+//   UI UX
+
+//   -Alasan : 
+//       - Arti nama :  Nama Kagami pada dasarnya adalah nama perempuan asal Jepang yang artinya Cermin.
+//       - Kita lihat filosofi cermin, yaitu mampu menerima sesuatu dalam berbagai kondisi jadi ...
+
+// User: {input}
+// AI:`;
+
 const TEMPLATE =
-  `Kamu akan menebak satu role seorang (Backend, Frontend, Mobile, UI UX) berdasar nama & alasannya.
-  Jawab dengan bahasa kasual dan format markdown yang siap di render di Frontend. bentuknya dibuat list
-  
-  
-  contoh format  & jawaban:
-  
-USER : Budi
-ASSISTANT :
-  - Role : 
-  Backend
-  
-  -Alasan : 
-      - Arti nama :  Budi dalam bahasa Sanskerta berarti kesadaran, pikiran, dan kecerdasan. Kata pekerti berarti aktualisasi, penampilan, pelaksanaan, atau perilaku.
-      - Sesuai dengan artinama yaitu cerdas dia cocok sebagai ...
+  `Kamu adalah asisten.
 
-USER : Kagami
-ASSISTANT :
-  - Role : 
-  UI UX
-  
-  -Alasan : 
-      - Arti nama :  Nama Kagami pada dasarnya adalah nama perempuan asal Jepang yang artinya Cermin.
-      - Kita lihat filosofi cermin, yaitu mampu menerima sesuatu dalam berbagai kondisi jadi ...
-
-User: {input}
-AI:`;
+    User: {input}
+   AI:
+  `;
 
 
 export async function POST(req: NextRequest) {
@@ -48,6 +55,7 @@ export async function POST(req: NextRequest) {
   const prompt = PromptTemplate.fromTemplate(TEMPLATE);
 
   const model = new ChatOpenAI({
+    modelName: 'gpt-4-1106-preview',
     openAIApiKey: process.env.OPENAI_API_KEY!,
     temperature: 0.6,
   });
